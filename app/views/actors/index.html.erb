@@ -1,0 +1,12 @@
+<h3 class="page-header">
+  All Actors
+  <span class="pull-right">
+    <%= link_to "New Actor", new_actor_path, class: 'btn btn-sm btn-success' %>
+  </span>
+</h3>
+
+<ul>
+  <% @actors.each do |actor| %>
+    <li><%= actor.name %> <%= link_to "Edit", edit_actor_path(actor) %> <%= link_to "Delete", actor_path(actor), method: :delete, data: {confirm: 'Are you sure you want to delete'} %></li>
+  <% end %>
+</ul>

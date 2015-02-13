@@ -1,0 +1,46 @@
+<!-- Use view helpers (e.g. link_to and image_tag) -->
+<!-- and implement real data -->
+
+<h1 class="title">
+  <%= @movie.name %>
+  <span class="rating"><%= @movie.rating %></span>
+</h1>
+
+<div class="row">
+  <div class="col-md-3 text-center">
+    <p><%= image_tag(@movie.image) %></p>
+    <p><a href="#" class="btn btn-sm btn-success"><i class="fa fa-shopping-cart"></i> <%= number_to_currency(@movie.price.to_d / 100) %> Buy in HD</a></p>
+    <p><strong>Genre:</strong> <%= @movie.genre %></p>
+    <p><strong>Released:</strong> <%= @movie.year_released %></p>
+  </div>
+  <div class="col-md-4 summary">
+    <h2>Summary</h2>
+    <p>
+      <%= @movie.summary %>
+    </p>
+  </div>
+  <div class="col-md-3 actors">
+    <h2>Cast</h2>
+    <ul class="list-unstyled">
+    <% @roles.each do |role| %>
+      <li><%= Actor.find_by(id: role.actor_id).name %> as <%= role.character_name %></li>
+    <% end %>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-9 col-md-offset-3 reviews">
+    <h2 class="page-header">Information</h2>
+    <table class="table table-striped table-bordered">
+      <tr>
+        <td><strong>Studio</strong></td>
+        <td><%= @movie.studio.name %></td>
+      </tr>
+      <tr>
+        <td><strong>Run Time</strong></td>
+        <td><%= @movie.runtime %></td>
+      </tr>
+    </table>
+  </div>
+</div>
